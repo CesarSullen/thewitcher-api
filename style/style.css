@@ -11,10 +11,6 @@
   font-family: "Poppins";
 }
 
-:root {
-  color-scheme: light dark;
-}
-
 @font-face {
   font-family: "Poppins";
   src: url("../typography/Poppins/Poppins-Regular.ttf") format("truetype");
@@ -30,7 +26,7 @@
 }
 
 .important-text-2 {
-  color: 333333;
+  color: #201d1d;
 }
 
 .bold {
@@ -80,6 +76,7 @@ hr {
   width: 100%;
   letter-spacing: 3px;
   text-transform: uppercase;
+  color: white;
 }
 .btn:hover {
   opacity: 0.6;
@@ -104,7 +101,7 @@ hr {
 }
 
 body {
-  background-color: 333333;
+  background-color: #201d1d;
 }
 
 .body-container, .hero-content {
@@ -116,6 +113,7 @@ body {
   grid-template-columns: 1fr;
   gap: 50px;
   margin-top: 2rem;
+  color: white;
 }
 
 .auto-show {
@@ -323,11 +321,12 @@ body {
 .card {
   position: relative;
 }
-.card:hover {
+.card:hover .card-img {
   transform: scale(1.1);
 }
 .card:hover .card-info {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
+  transform: scale(1.1);
 }
 
 .card-img {
