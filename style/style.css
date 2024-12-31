@@ -146,6 +146,28 @@ body {
     transform: scale(1);
   }
 }
+@keyframes svgDraw {
+  0% {
+    fill: transparent;
+    stroke-dashoffset: 440;
+  }
+  10% {
+    fill: transparent;
+  }
+  40% {
+    stroke-dashoffset: 0;
+    fill: #ee1720;
+  }
+  50% {
+    fill: #ee1720;
+  }
+  80% {
+    fill: transparent;
+  }
+  100% {
+    stroke-dashoffset: 440;
+  }
+}
 .navbar {
   padding-block: 0.5rem;
   padding-inline: 2rem;
@@ -222,13 +244,19 @@ body {
 }
 
 .hero {
-  background-image: url("../assets/background.jpg");
+  position: relative;
   background-color: rgba(0, 0, 0, 0.5);
   background-blend-mode: multiply;
+  background-image: url(../assets/background.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
+  content: "";
+  inset: 0;
+  z-index: -1;
+  mask-image: url(../assets/ink_mask.gif);
+  mask-size: cover;
+  mask-position: center;
 }
 
 .hero-content {
@@ -298,13 +326,20 @@ body {
 }
 
 .separator-text {
-  font-family: "Amarante";
+  width: 120px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(3);
-  text-transform: uppercase;
-  color: #ee1720;
+}
+
+.separator-text path {
+  fill: transparent;
+  stroke: #ee1720;
+  stroke-width: 2;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  animation: svgDraw 15s ease-in-out infinite;
 }
 
 .cards-section {

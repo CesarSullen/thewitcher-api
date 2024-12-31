@@ -27,3 +27,26 @@
 		transform: scale(1);
 	}
 }
+
+@keyframes svgDraw {
+	0% {
+		fill: transparent;
+		stroke-dashoffset: 440;
+	}
+	10% {
+		fill: transparent;
+	}
+	40% {
+		stroke-dashoffset: 0;
+		fill: $primary-color;
+	}
+	50% {
+		fill: $primary-color;
+	}
+	80% {
+		fill: transparent;
+	}
+	100% {
+		stroke-dashoffset: 440;
+	}
+}

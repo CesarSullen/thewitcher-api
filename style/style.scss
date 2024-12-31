@@ -82,13 +82,19 @@
 
 //Header
 .hero {
-	background-image: url("../assets/background.jpg");
+	position: relative;
 	background-color: rgba($color: #000000, $alpha: 0.5);
 	background-blend-mode: multiply;
+	background-image: url(../assets/background.jpg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	position: relative;
+	content: "";
+	inset: 0;
+	z-index: -1;
+	mask-image: url(../assets/ink_mask.gif);
+	mask-size: cover;
+	mask-position: center;
 }
 .hero-content {
 	@extend .body-container;
@@ -153,13 +159,19 @@
 	opacity: 0.5;
 }
 .separator-text {
-	font-family: "Amarante";
+	width: 120px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%) scale(3);
-	text-transform: uppercase;
-	color: $primary-color;
+}
+.separator-text path {
+	fill: transparent;
+	stroke: $primary-color;
+	stroke-width: 2;
+	stroke-dasharray: 440;
+	stroke-dashoffset: 440;
+	animation: svgDraw 15s ease-in-out infinite;
 }
 
 // Cards Section
