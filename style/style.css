@@ -355,16 +355,9 @@ body {
 .card {
   position: relative;
 }
-.card:hover .card-img {
-  transform: scale(1.1);
-}
-.card:hover .card-info {
-  background-color: rgba(0, 0, 0, 0);
-  transform: scale(1.1);
-}
 
 .card-img {
-  border-radius: 25px;
+  border-radius: 8px;
   width: 100%;
   margin-top: 2rem;
 }
@@ -373,10 +366,10 @@ body {
   color: white;
   position: absolute;
   width: 100%;
-  height: 30%;
+  aspect-ratio: 6/2;
   bottom: 1.7%;
   background-color: rgba(0, 0, 0, 0.8);
-  border-radius: 0 0 25px 25px;
+  border-radius: 0 0 8px 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -455,7 +448,26 @@ body {
   .cards-container {
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 20px;
+  }
+  .card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  .card:hover + .card * {
+    transform: rotateY(30deg) translateZ(30px);
+    filter: brightness(0.7);
+  }
+  .card:hover .card-img {
+    transform: scale(1.1);
+  }
+  .card:hover .card-info {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .card:has(+ *:hover) * {
+    transform: rotateY(-30deg) translateZ(30px);
+    filter: brightness(0.7);
   }
 }
 

@@ -186,19 +186,9 @@
 }
 .card {
 	position: relative;
-
-	&:hover {
-		.card-img {
-			transform: scale(1.1);
-		}
-		.card-info {
-			background-color: rgba($color: #000000, $alpha: 0);
-			transform: scale(1.1);
-		}
-	}
 }
 .card-img {
-	border-radius: $border-radius-general;
+	border-radius: 8px;
 	width: 100%;
 	margin-top: 2rem;
 }
@@ -206,10 +196,10 @@
 	color: white;
 	position: absolute;
 	width: 100%;
-	height: 30%;
+	aspect-ratio: 6/2;
 	bottom: 1.7%;
 	background-color: rgba($color: #000000, $alpha: 0.8);
-	border-radius: 0 0 $border-radius-general $border-radius-general;
+	border-radius: 0 0 8px 8px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -298,6 +288,28 @@
 	.cards-container {
 		display: flex;
 		flex-direction: row;
-		gap: 50px;
+		gap: 20px;
+	}
+	.card {
+		transform-style: preserve-3d;
+		perspective: 1000px;
+		&:hover {
+			+ .card * {
+				transform: rotateY(30deg) translateZ(30px);
+				filter: brightness(0.7);
+			}
+
+			.card-img {
+				transform: scale(1.1);
+			}
+			.card-info {
+				transform: scale(1.1);
+				background-color: rgba($color: #000000, $alpha: 0);
+			}
+		}
+		&:has(+ *:hover) * {
+			transform: rotateY(-30deg) translateZ(30px);
+			filter: brightness(0.7);
+		}
 	}
 }
